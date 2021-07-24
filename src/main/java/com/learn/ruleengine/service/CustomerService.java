@@ -23,7 +23,7 @@ public class CustomerService {
     @Autowired
     KieSession ksession_drl;
 
-    public Customer getCustomer() {
+    public Customer getCustomerExcel() {
         Customer customer = new Customer();
         customer.setBond(7);
         customer.setName("Rohit");
@@ -45,7 +45,7 @@ public class CustomerService {
         return customer;
     }
 
-    public Customer updateCustomerFromRules(Customer customer) {
+    public Customer updateCustomerFromExcelRules(Customer customer) {
         ksession_excel.insert(customer);
         ksession_excel.fireAllRules();
         return customer;

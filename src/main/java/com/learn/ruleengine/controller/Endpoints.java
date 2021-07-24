@@ -29,7 +29,7 @@ public class Endpoints {
 
     @GetMapping(value = "customer" , produces = MediaType.APPLICATION_JSON_VALUE)
     public Customer getcustomer() {
-        Customer customer = customerService.getCustomer();
+        Customer customer = customerService.getCustomerExcel();
         System.out.println(customer);
         System.out.println(customer.getOffers());
         return customer;
@@ -45,7 +45,7 @@ public class Endpoints {
 
     @PostMapping(value = "customer" , produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public Customer updateCustomer(@RequestBody Customer requestCustomer) {
-        Customer customer = customerService.updateCustomerFromRules(requestCustomer);
+        Customer customer = customerService.updateCustomerFromExcelRules(requestCustomer);
         System.out.println(customer);
         System.out.println(customer.getOffers());
         return customer;
