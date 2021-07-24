@@ -1,6 +1,6 @@
 # Drool-Rule-Engine
 
-###Steps to start:
+### Steps to start:
 
 * docker-compose up -d
 
