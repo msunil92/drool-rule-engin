@@ -71,6 +71,7 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                    <finalName>drool-rule-engine-0.0.1</finalName>
                 </configuration>
             </plugin>
         </plugins>

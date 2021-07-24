@@ -1,0 +1,8 @@
+version: "3"
+services:
+  drool-rule-engine:
+    image: drool-rule-engine
+    build: .
+    container_name: drool-rule-engine-app
+    ports:
+      - "8080:8080"
