@@ -3,6 +3,7 @@ package com.learn.ruleengine.service;
 import com.learn.ruleengine.model.Customer;
 import org.kie.api.runtime.KieSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,23 +15,45 @@ import org.springframework.stereotype.Service;
 @Service
 public class CustomerService {
 
+    @Qualifier("excel")
     @Autowired
-    KieSession ksession;
+    KieSession ksession_excel;
+
+    @Qualifier("drl")
+    @Autowired
+    KieSession ksession_drl;
 
     public Customer getCustomer() {
         Customer customer = new Customer();
         customer.setBond(7);
         customer.setName("Rohit");
         customer.setType(Customer.CustomerType.GOLD);
-        ksession.insert(customer);
-        ksession.fireAllRules();
+        ksession_excel.insert(customer);
+        ksession_excel.fireAllRules();
+
+        return customer;
+    }
+
+    public Customer getCustomerDrl() {
+        Customer customer = new Customer();
+        customer.setBond(7);
+        customer.setName("Rohit");
+        customer.setType(Customer.CustomerType.GOLD);
+        ksession_drl.insert(customer);
+        ksession_drl.fireAllRules();
 
         return customer;
     }
 
     public Customer updateCustomerFromRules(Customer customer) {
-        ksession.insert(customer);
-        ksession.fireAllRules();
+        ksession_excel.insert(customer);
+        ksession_excel.fireAllRules();
+        return customer;
+    }
+
+    public Customer updateCustomerFromDrlRules(Customer customer) {
+        ksession_drl.insert(customer);
+        ksession_drl.fireAllRules();
         return customer;
     }
 }

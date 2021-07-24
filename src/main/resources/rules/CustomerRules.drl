@@ -1,0 +1,11 @@
+package rules
+
+import com.learn.ruleengine.model.Customer;
+
+rule "Bond check"
+when
+    customerObj: Customer(bond == 7)
+then
+	customerObj.setOffers(1000);
+	customerObj.setStatus("Super duper");
+end
